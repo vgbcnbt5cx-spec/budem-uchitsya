@@ -439,6 +439,29 @@
     }
 
     @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .logo-block {
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .logo-img {
+        width: 60px;
+        height: 60px;
+      }
+      .logo-text-main {
+        font-size: 20px;
+      }
+      .logo-text-sub {
+        font-size: 14px;
+      }
+      .header-contact {
+        text-align: left;
+        font-size: 14px;
+      }
       .hero {
         padding: 20px 16px;
       }
@@ -950,7 +973,7 @@
             <h3>Елена Юрьевна Пушкарева</h3>
           </div>
           <p>
-            Работаю с дошкольниками и первоклассниками. Помогаю детям спокойно и уверенно входить в школьную жизнь, осваивать чтение, письмо и математику без страха перед ошибками.
+            Работаю с дошкольниками и с учениками начальных классов. Помогаю детям спокойно и уверенно входить в школьную жизнь, осваивать чтение, письмо и математику без страха перед ошибками.
           </p>
           <p><strong>Образование и квалификация:</strong></p>
           <ul>
@@ -998,7 +1021,31 @@
           <div class="reviews-dot" data-index="6"></div>
           <div class="reviews-dot" data-index="7"></div>
         </div>
-      </sectio
+      </section>
+
+      <div class="reviews-quotes">
+        <div class="reviews-quotes-title">Что говорят родители:</div>
+        <div class="reviews-quotes-grid">
+          <div class="review-quote">
+            <strong>Мама первоклассницы</strong>
+            <p>«Самый любимый педагог. Дочка ждёт занятий и с удовольствием ходит на уроки. Спасибо за знания и тёплое отношение!»</p>
+          </div>
+          <div class="review-quote">
+            <strong>Родители двойняшек</strong>
+            <p>«Занимаемся с нуля, готовимся к школе. Уже через пару месяцев увидели результат — мальчики стали увереннее и сами просят заниматься.»</p>
+          </div>
+          <div class="review-quote">
+            <strong>Мама Вики</strong>
+            <p>«Ребёнку очень нравится у вас, ждёт каждое занятие. Для нас важно, что уроки проходят в игровой форме и без слёз.»</p>
+          </div>
+          <div class="review-quote">
+            <strong>Мама выпускника</strong>
+            <p>«Спасибо за все знания! Будем и дальше рекомендовать вас знакомым — ребёнок стал спокойнее относиться к школе и увереннее выполнять задания.»</p>
+          </div>
+        </div>
+      </div>
+
+      
       <!-- Оставить отзыв -->
       <section class="section feedback-section" id="feedback">
         <div class="section-header">
@@ -1026,38 +1073,15 @@
             <div class="feedback-actions">
               <button type="submit" class="btn-primary whatsapp-btn">Отправить отзыв в WhatsApp</button>
               <div class="feedback-note">
-                Откроется окно WhatsApp с подготовленным текстом — вы сможете его отредактировать и отправить.
+                Откроется окно WhatsApp с подготовленным текстом — вы сможете его отредактировать и отправить.<br />
+                Или написать отзыв в <a href="https://vk.com/club211359973" target="_blank" rel="noopener">VK</a> / <a href="https://t.me/bydemychitsia" target="_blank" rel="noopener">Telegram</a>.
               </div>
             </div>
           </form>
         </div>
       </section>
 
-n>
-
-      <div class="reviews-quotes">
-        <div class="reviews-quotes-title">Что говорят родители:</div>
-        <div class="reviews-quotes-grid">
-          <div class="review-quote">
-            <strong>Мама первоклассницы</strong>
-            <p>«Самый любимый педагог. Дочка ждёт занятий и с удовольствием ходит на уроки. Спасибо за знания и тёплое отношение!»</p>
-          </div>
-          <div class="review-quote">
-            <strong>Родители двойняшек</strong>
-            <p>«Занимаемся с нуля, готовимся к школе. Уже через пару месяцев увидели результат — мальчики стали увереннее и сами просят заниматься.»</p>
-          </div>
-          <div class="review-quote">
-            <strong>Мама Вики</strong>
-            <p>«Ребёнку очень нравится у вас, ждёт каждое занятие. Для нас важно, что уроки проходят в игровой форме и без слёз.»</p>
-          </div>
-          <div class="review-quote">
-            <strong>Мама выпускника</strong>
-            <p>«Спасибо за все знания! Будем и дальше рекомендовать вас знакомым — ребёнок стал спокойнее относиться к школе и увереннее выполнять задания.»</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Контакты --><!-- Контакты -->
+<!-- Контакты --><!-- Контакты -->
       <section class="section">
         <div class="section-header">
           <h2 class="section-title">Контакты и запись</h2>
@@ -1179,7 +1203,7 @@ n>
           msg += 'От: ' + encodeURIComponent(name) + '%0A';
         }
         if (child) {
-          msg += 'Ребенок: ' + encodeURIComponent(child) + '%0A';
+          msg += 'Ребёнок: ' + encodeURIComponent(child) + '%0A';
         }
         msg += '%0A' + encodeURIComponent(text);
         var url = 'https://wa.me/79099430970?text=' + msg;
