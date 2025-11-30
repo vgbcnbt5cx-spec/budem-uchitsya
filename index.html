@@ -834,6 +834,41 @@
   }
 }
 
+
+/* ——— Финальный фикс: логотип больше НЕ обрезается сверху/снизу ——— */
+@media (max-width: 768px) {
+
+  .logo-block {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 16px 20px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  .logo-img {
+    width: auto !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    overflow: visible !important;
+  }
+
+  .logo-img img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    height: auto !important;
+    width: auto !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+}
+
 </style>
 </head>
 <body>
