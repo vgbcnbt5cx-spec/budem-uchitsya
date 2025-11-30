@@ -775,8 +775,7 @@
       max-width: 420px;
     }
 
-  
-/* === Улучшенная мобильная версия (стиль Б) === */
+  /* === Улучшенная мобильная версия (стиль Б) === */
 @media (max-width: 768px) {
   header {
     position: sticky;
@@ -788,27 +787,13 @@
   }
   .logo-img img { width: 115px !important; transition: transform 0.25s ease; }
   body.scrolled header .logo-img img { transform: scale(0.94) translateY(-4px); }
-  .hero { padding: 45px 20px !important; background: linear-gradient(180deg,#eef4ff,#ffffff); border-radius:0 0 26px 26px; }
-  .hero-title { font-size:29px !important; line-height:1.25; font-weight:700; text-align:center; }
-  .hero-subtitle { font-size:18px !important; text-align:center; opacity:.85; margin-bottom:26px; }
-  .btn-primary { padding:15px 24px !important; font-size:19px !important; border-radius:16px; background:linear-gradient(135deg,#3c6fd9,#5a8cff); box-shadow:0 6px 12px rgba(60,110,217,.25); transition:transform .15s ease; }
-  .btn-primary:active { transform:scale(.93); }
-  .cards-grid { grid-template-columns:1fr !important; gap:26px !important; padding:0 10px; }
-  .card { padding:26px !important; border-radius:20px; background:linear-gradient(180deg,#ffffff,#f4f6ff); box-shadow:0 8px 18px rgba(0,0,0,.08); opacity:0; transform:translateY(20px); animation:card-fade .6s ease forwards; }
-  @keyframes card-fade { to { opacity:1; transform:translateY(0);} }
-  .card:nth-child(1){animation-delay:.05s;}
-  .card:nth-child(2){animation-delay:.15s;}
-  .card:nth-child(3){animation-delay:.25s;}
-  .card:nth-child(4){animation-delay:.35s;}
-  .card:nth-child(5){animation-delay:.45s;}
-  .card-title { font-size:21px !important; margin-bottom:12px; }
-  .card-text { font-size:17px !important; line-height:1.45; }
-  .review-item { padding:22px !important; border-radius:20px; background:#fff; box-shadow:0 6px 14px rgba(0,0,0,.07); }
-  .review-text { font-size:17px !important; line-height:1.45; }
-  .contact-buttons { gap:20px !important; }
-  .contact-buttons a { padding:18px !important; border-radius:18px !important; font-size:19px !important; font-weight:600; box-shadow:0 6px 14px rgba(0,0,0,.07); transition:transform .15s ease; }
-  .contact-buttons a:active { transform:scale(.92); }
 }
+
+/* === Адаптивные размеры логотипа === */
+@media (max-width: 360px) {.logo-img img { width: 95px !important; }}
+@media (min-width: 361px) and (max-width: 420px) {.logo-img img { width: 115px !important; }}
+@media (min-width: 421px) and (max-width: 520px) {.logo-img img { width: 130px !important; }}
+@media (min-width: 521px) and (max-width: 768px) {.logo-img img { width: 150px !important; }}
 
 </style>
 </head>
