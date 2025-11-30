@@ -989,9 +989,813 @@ body.scrolled .logo-img img {
   transition: 0.35s ease;
 }
 
+
+/* === PREMIUM ADAPTATION 3.0 — Dark Mode, Scroll Reveal, Premium Menu === */
+
+/* Auto dark mode */
+@media (prefers-color-scheme: dark) {
+  body { background:#0f1115; color:#e8ecf3; }
+  header { background:rgba(20,22,28,0.55) !important; }
+  .hero { background:linear-gradient(180deg,#1c1f26,#0f1115) !important; }
+  .card, .review-item {
+    background:#1c1f26 !important;
+    color:#e8ecf3 !important;
+    box-shadow:0 10px 24px rgba(0,0,0,0.4) !important;
+  }
+}
+
+/* Scroll reveal for cards */
+.reveal {opacity:0; transform:translateY(40px); transition:0.6s ease;}
+.reveal.visible {opacity:1; transform:translateY(0);}
+
+/* Premium slide-in mobile menu placeholder if needed */
+
+
+/* === PREMIUM ADAPTATION 4.0 — Slide Menu, Scrim, Magnetic Hover, Dynamic Header === */
+
+/* Burger button */
+.burger {
+  position: fixed;
+  top: 14px;
+  left: 16px;
+  z-index: 2000;
+  width: 34px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.burger div {
+  height: 4px;
+  background: var(--text-main);
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+/* Menu open animation */
+.menu-open .burger div:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+.menu-open .burger div:nth-child(2) { opacity: 0; }
+.menu-open .burger div:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+
+/* Slide-in menu panel */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 240px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 4px 0 18px rgba(0,0,0,0.12);
+  padding: 60px 20px;
+  transition: 0.35s ease;
+  z-index: 1800;
+}
+body.menu-open .side-menu {
+  left: 0;
+}
+
+/* Scrim overlay */
+.scrim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease;
+  z-index: 1500;
+}
+body.menu-open .scrim {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Magnetic hover on cards (premium UI) */
+@media (min-width: 390px) and (max-width: 768px) {
+  .card {
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease !important;
+  }
+  .card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.14);
+  }
+}
+
+/* Dynamic header transparency */
+header {
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+body.scrolled header {
+  background: rgba(255,255,255,0.75) !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+/* Dark-mode support for new elements */
+@media (prefers-color-scheme: dark) {
+  .side-menu {
+    background: #1c1f26;
+    color: #e9ecf5;
+  }
+  .burger div {
+    background: #e9ecf5 !important;
+  }
+}
+
+
+/* === PREMIUM ADAPTATION 5.0 — Parallax, Gyro, Spring Cards, AutoScroll, Retina === */
+
+/* Parallax background */
+.parallax-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('https://i.imgur.com/nZ7kU0i.jpg') center/cover no-repeat;
+  z-index: -1;
+  transform: translateY(0);
+  transition: transform 0.2s ease-out;
+  opacity: 0.25;
+}
+
+/* Spring physics card tap */
+.card:active {
+  transform: scale(0.94) rotateX(2deg);
+  transition: 0.15s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Retina optimization */
+img { image-rendering: -webkit-optimize-contrast; }
+
+/* Auto-scroll section buttons */
+.menu-link { cursor: pointer; }
+
+/* Gyroscope tilt effect */
+.gyro-tilt {
+  transition: transform 0.15s ease;
+  transform-style: preserve-3d;
+}
+
+
+/* === PREMIUM 6.0 — Neumorphism, Particles, Scroll Bar, Splash Screen, Page Transitions === */
+
+/* Neumorphic buttons */
+.btn-primary {
+  background: #f2f6ff !important;
+  border-radius: 16px !important;
+  box-shadow: 8px 8px 16px #d9dce3, -8px -8px 16px #ffffff !important;
+  color: #3c6fd9 !important;
+}
+.btn-primary:active {
+  box-shadow: inset 8px 8px 16px #d9dce3, inset -8px -8px 16px #ffffff !important;
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg,#3c6fd9,#5a8cff);
+  z-index: 4000;
+  transition: width 0.1s linear;
+}
+
+/* Page fade transitions */
+body {
+  opacity: 0;
+  animation: pageEnter .5s ease forwards;
+}
+@keyframes pageEnter { to { opacity: 1; } }
+
+/* Splash screen */
+#splash {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:white;
+  z-index:5000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:26px;
+  font-weight:700;
+  opacity:1;
+  transition: opacity .5s ease;
+}
+
+/* Particle container */
+#particles {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  z-index: -2;
+}
+
+
+/* === PREMIUM 7.0 — Stars, Rewards, Levels, Time Themes, Section Slide, Sounds, Mini‑Game === */
+
+/* Reward stars animation */
+.reward-star {
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  font-size: 32px;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.4);
+  animation: starDrop 1s ease forwards;
+  z-index: 6000;
+}
+@keyframes starDrop {
+  0% { opacity:0; transform: translateX(-50%) translateY(0) scale(0.4); }
+  60% { opacity:1; transform: translateX(-50%) translateY(40px) scale(1.1); }
+  100% { opacity:0; transform: translateX(-50%) translateY(120px) scale(0.8); }
+}
+
+/* Level badge */
+.level-badge {
+  position: fixed;
+  bottom: 90px;
+  left: 16px;
+  background:#fff;
+  padding:10px 16px;
+  border-radius:12px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.15);
+  font-weight:700;
+  z-index:4500;
+}
+
+/* Time-based themes */
+@media screen and (max-width: 768px) {
+  body.morning { background:#fff7e6 !important; }
+  body.evening { background:#f5f0ff !important; }
+  body.night { background:#0c1016 !important; color:#dce1ec !important; }
+}
+
+/* Slide transition between sections */
+.section {
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.6s ease;
+}
+.section.visible { opacity:1; transform:translateY(0); }
+
+/* Mini‑game: catch the apple */
+#apple-game {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 5000;
+  font-size: 28px;
+  cursor: pointer;
+  user-select:none;
+  animation: applePulse 1.4s ease infinite;
+}
+@keyframes applePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+
+/* === PREMIUM 8.0 — Profile, Achievements, Map, Stickers, Assistant, Quiet Mode, Logo Animations === */
+
+/* Profile widget */
+#child-profile {
+  position: fixed;
+  top: 70px;
+  left: 16px;
+  background: #ffffffdd;
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  z-index: 4500;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+#child-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Achievements */
+#achievements {
+  position: fixed;
+  bottom: 160px;
+  right: 16px;
+  background: #fff;
+  padding: 14px 20px;
+  border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.18);
+  z-index:4500;
+  max-width: 180px;
+}
+
+/* Stickers popup */
+.sticker {
+  position: fixed;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.2);
+  font-size: 50px;
+  opacity:0;
+  animation: stickerPop 1s ease forwards;
+  z-index:5000;
+}
+@keyframes stickerPop {
+  0% { opacity:0; transform:translateX(-50%) scale(0.2); }
+  50% { opacity:1; transform:translateX(-50%) scale(1.2); }
+  100% { opacity:1; transform:translateX(-50%) scale(1); }
+}
+
+/* Quiet mode (evening calming) */
+body.quiet {
+  filter: brightness(0.85) saturate(0.8);
+}
+
+/* Logo micro animation */
+.logo-img img {
+  animation: logoFloat 4s ease-in-out infinite;
+}
+@keyframes logoFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Assistant bubble */
+#assistant-bubble {
+  position: fixed;
+  bottom: 80px;
+  left: 16px;
+  background:#3c6fd9;
+  color:white;
+  padding:16px 20px;
+  border-radius:20px;
+  font-size:15px;
+  max-width:200px;
+  animation: bubbleIn .6s ease forwards;
+  opacity:0;
+  z-index:4500;
+}
+@keyframes bubbleIn {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+
+/* === PREMIUM 9.0 — Parent Dashboard, Progress Map, Pet, Themes, Voice Assistant, Math Mini-game === */
+
+/* Parent dashboard button */
+#parent-dashboard-btn {
+  position: fixed;
+  top: 130px;
+  left: 16px;
+  padding: 10px 16px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.12);
+  font-weight:600;
+  z-index:4600;
+}
+
+/* Parent panel */
+#parent-panel {
+  position: fixed;
+  top:0; right:-300px;
+  width:260px; height:100%;
+  background:#ffffff;
+  box-shadow:-4px 0 18px rgba(0,0,0,0.15);
+  padding:20px;
+  transition:0.35s ease;
+  z-index:5000;
+  overflow-y:auto;
+}
+body.parent-open #parent-panel { right:0; }
+
+/* Progress map */
+#progress-map {
+  position: fixed;
+  bottom: 100px;
+  left: 16px;
+  background:#fff;
+  padding: 14px 18px;
+  border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.18);
+  z-index:4500;
+}
+
+/* Virtual pet */
+#pet {
+  position: fixed;
+  bottom: 50px;
+  right: 80px;
+  font-size: 48px;
+  animation: petFloat 3s ease-in-out infinite;
+  z-index:4500;
+}
+@keyframes petFloat {
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-8px); }
+  100%{ transform:translateY(0); }
+}
+
+/* Theme switcher */
+#theme-switcher {
+  position: fixed;
+  bottom: 20px;
+  left: 16px;
+  background:#fff;
+  padding:10px 16px;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  z-index:4500;
+}
+
+/* Slide themes */
+body.theme-forest { background:#e9f7ec !important; }
+body.theme-sea { background:#e6f7ff !important; }
+body.theme-space { background:#f3e6ff !important; }
+
+/* Math game */
+#math-game {
+  position: fixed;
+  bottom: 140px;
+  right: 16px;
+  background:#fff;
+  padding: 10px 14px;
+  border-radius:16px;
+  font-size:16px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  z-index:4500;
+  cursor:pointer;
+}
+
+
+/* === PREMIUM 10.0 — XP, Coins, Sticker Shop, World Map, Quests, Voice Assistant, Weather FX, Full Page Transitions === */
+
+/* XP + Coins HUD */
+#hud {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  background: #ffffffdd;
+  padding: 10px 16px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  font-size: 15px;
+  display: flex;
+  gap: 14px;
+  z-index: 5000;
+}
+
+/* Sticker Shop */
+#shop {
+  position: fixed;
+  bottom: 200px;
+  right: 16px;
+  background: #fff;
+  padding: 14px 18px;
+  border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.18);
+  z-index:4500;
+  cursor:pointer;
+}
+#shop-popup {
+  position: fixed;
+  bottom: -320px;
+  right: 16px;
+  width: 220px;
+  background: white;
+  box-shadow:0 6px 24px rgba(0,0,0,0.25);
+  padding:20px;
+  border-radius:16px;
+  transition:0.4s ease;
+  z-index:5000;
+}
+body.shop-open #shop-popup { bottom: 80px; }
+
+/* World map modal */
+#world-map {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.55);
+  z-index:6000;
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+#world-map-content {
+  width:90%;
+  max-width:380px;
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 6px 28px rgba(0,0,0,0.3);
+}
+
+/* Quests */
+#quests {
+  position: fixed;
+  bottom: 260px;
+  left: 16px;
+  background:#fff;
+  padding:14px 18px;
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+  z-index:4500;
+}
+
+/* Weather FX */
+.weather {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  pointer-events:none;
+  z-index: -1;
+}
+.snowflake {
+  position: absolute;
+  color: white;
+  font-size: 18px;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(110%); }
+}
+
+/* Page slide transitions */
+.page-transition {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:white;
+  z-index:7000;
+  transform: translateX(100%);
+  transition:0.5s ease;
+}
+.page-transition.active {
+  transform: translateX(0);
+}
+
+
+/* === PREMIUM 12.0 — World Map Engine, Level JSON, Lesson Select, Module System === */
+
+#world-map-btn {
+  position:fixed;
+  bottom:330px;
+  left:16px;
+  padding:12px 16px;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.2);
+  font-weight:600;
+  z-index:4600;
+}
+
+#lesson-map-modal {
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.55);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:7000;
+}
+#lesson-map {
+  background:white;
+  width:92%;
+  max-width:380px;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+.lesson-node {
+  padding:10px;
+  margin:10px 0;
+  border-radius:14px;
+  background:#f4f6ff;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+.lesson-node.locked {
+  opacity:0.4;
+  background:#ddd;
+  cursor:not-allowed;
+}
+
+
+/* === PREMIUM 13.0 — Voice Assistant, Parent Analytics, Pet 2.0 === */
+
+#voice-btn {
+  position: fixed;
+  bottom: 220px;
+  right: 16px;
+  background:#3c6fd9;
+  color:white;
+  padding:14px 18px;
+  border-radius:50px;
+  font-size:18px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.2);
+  z-index:4800;
+  cursor:pointer;
+}
+
+#parent-analytics {
+  position: fixed;
+  top:0; left:-320px;
+  width:300px; height:100%;
+  background:white;
+  padding:20px;
+  border-right:1px solid #ccc;
+  box-shadow:4px 0 18px rgba(0,0,0,0.22);
+  transition:0.4s ease;
+  z-index:6200;
+}
+body.analytics-open #parent-analytics { left:0; }
+
+#analytics-btn {
+  position: fixed;
+  top: 200px;
+  left: 16px;
+  padding:12px 16px;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  font-weight:600;
+  z-index:4600;
+}
+
+#pet-area {
+  position: fixed;
+  bottom: 10px;
+  right: 16px;
+  background:#fff;
+  padding:12px 16px;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  z-index:4600;
+}
+
+
+/* === PREMIUM 14.0 — Animated Lessons, Word Game, TTS Lessons, Chest Rewards === */
+
+#word-game-btn {
+  position:fixed; bottom:380px; right:16px;
+  background:#fff; padding:12px 16px;
+  border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  font-weight:600; z-index:4600; cursor:pointer;
+}
+
+#lesson-anim {
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:white; display:none; justify-content:center; align-items:center;
+  z-index:7200; font-size:32px; font-weight:700;
+}
+
+#reward-chest {
+  position:fixed; bottom:300px; left:16px;
+  background:#ffeb99; padding:14px 18px;
+  border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  cursor:pointer; z-index:4800;
+  animation: chestPulse 2s infinite;
+}
+
+@keyframes chestPulse {
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+  100%{ transform:scale(1); }
+}
+
+
+/* === PREMIUM 15.0 — Talking Mascot, Branch Lessons, Math Engine 2.0, Achievements === */
+
+#mascot {
+  position:fixed; bottom:200px; left:16px;
+  background:#fff; padding:16px 20px;
+  border-radius:20px; box-shadow:0 6px 16px rgba(0,0,0,0.2);
+  display:flex; gap:12px; align-items:center;
+  z-index:4800; cursor:pointer;
+}
+#mascot img { width:60px; }
+
+#lesson-branches-btn {
+  position:fixed; bottom:430px; right:16px;
+  background:#fff; padding:12px 16px;
+  border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  font-weight:600; z-index:4600; cursor:pointer;
+}
+
+#branches-modal {
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.55); display:none;
+  justify-content:center; align-items:center;
+  z-index:7600;
+}
+#branches-box {
+  background:white; padding:20px; border-radius:20px;
+  width:90%; max-width:360px;
+}
+
+.branch {
+  padding:12px; margin:10px 0; border-radius:14px;
+  background:#f0f4ff; cursor:pointer; font-weight:600;
+}
+
+#achievements-panel {
+  position:fixed; top:0; right:-300px;
+  width:260px; height:100%; background:white;
+  padding:20px; box-shadow:-4px 0 16px rgba(0,0,0,0.2);
+  z-index:8000; transition:0.4s ease;
+}
+body.achievements-open #achievements-panel { right:0; }
+
+#achievements-btn {
+  position:fixed; top:260px; left:16px;
+  background:#fff; padding:12px 16px;
+  border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  font-weight:600; cursor:pointer; z-index:4800;
+}
+
+
+/* === PREMIUM 16.0 — Module Lessons System Scaffold === */
+#module-lessons-btn {
+  position:fixed; bottom:480px; right:16px;
+  background:#fff; padding:12px 16px;
+  border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  font-weight:600; z-index:4800; cursor:pointer;
+}
+
+#module-screen {
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:white; display:none; z-index:8000;
+  padding:20px; overflow-y:auto;
+}
+.lesson-card {
+  padding:16px; margin:12px 0;
+  background:#f4f7ff; border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  cursor:pointer; font-size:18px;
+}
+
+
+/* === PREMIUM 17.0 — Fullscreen Lesson Engine, Drag&Drop, Picture Lessons, TTS Narration === */
+
+#lesson-engine {
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:white; display:none;
+  z-index:9000; padding:20px;
+  overflow-y:auto;
+}
+
+.lesson-header {
+  font-size:26px; font-weight:700; margin-bottom:12px;
+}
+
+.drag-area {
+  display:flex; gap:14px; flex-wrap:wrap; margin-top:20px;
+}
+
+.drag-item {
+  padding:14px 18px; background:#e6f0ff;
+  border-radius:14px; cursor:pointer;
+  font-size:20px; user-select:none;
+}
+
+.drop-target {
+  width:160px; height:60px;
+  border:2px dashed #3c6fd9;
+  border-radius:12px;
+  margin-top:20px;
+  display:flex; justify-content:center; align-items:center;
+  font-size:20px; font-weight:600;
+}
+
+.pic-lesson img {
+  width:100%; max-width:260px; border-radius:20px;
+  margin-top:14px;
+}
+
 </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
+<div id="splash">Будем учиться…</div>
+<div class='parallax-bg'></div>
+<div class="burger"><div></div><div></div><div></div></div>
+<div class="side-menu">
+  <h3 style="margin-bottom:20px;">Меню</h3>
+  <a href="#about" style="display:block;margin-bottom:12px;">О занятиях</a>
+  <a href="#services" style="display:block;margin-bottom:12px;">Курсы</a>
+  <a href="#reviews" style="display:block;margin-bottom:12px;">Отзывы</a>
+  <a href="https://wa.me/79099430970" style="display:block;margin-top:20px;font-weight:600;">Связаться</a>
+</div>
+<div class="scrim"></div>
+
   <div class="page">
     <header>
       <div class="logo-block">
@@ -1013,7 +1817,7 @@ body.scrolled .logo-img img {
 
     <main>
       <!-- Hero -->
-      <section class="hero">
+      <section class='section' class="hero">
         <div>
           <div class="hero-badge">Дошкольники и 1–4 классы • «Школа России» • Ногинск</div>
           <h1 class="hero-title">Первоклассник без слёз и истерик — это реально 💛</h1>
@@ -1053,7 +1857,7 @@ body.scrolled .logo-img img {
       </section>
 
       <!-- Для кого -->
-      <section class="section">
+      <section class='section' class="section">
         <div class="section-header">
           <h2 class="section-title">Для кого подойдут занятия</h2>
           <p class="section-sub">Работаю с дошкольниками и первоклассниками, особенно по программе «Школа России».</p>
@@ -1092,7 +1896,7 @@ body.scrolled .logo-img img {
       </section>
 
       <!-- Чем занимаемся / Как проходят занятия -->
-      <section class="section">
+      <section class='section' class="section">
         <div class="section-header">
           <h2 class="section-title">Чем занимаемся на уроках</h2>
           <p class="section-sub">Задача — не только знания, но и уверенность ребёнка в своих силах.</p>
@@ -1139,7 +1943,7 @@ body.scrolled .logo-img img {
       </section>
 
       <!-- Подход -->
-      <section class="section">
+      <section class='section' class="section">
         <div class="section-header">
           <h2 class="section-title">Мой подход к ребёнку</h2>
           <p class="section-sub">Поддержка вместо давления, интерес вместо страха.</p>
@@ -1176,7 +1980,7 @@ body.scrolled .logo-img img {
       </section>
 
       <!-- Обо мне -->
-      <section class="section">
+      <section class='section' class="section">
         <div class="section-header">
           <h2 class="section-title">Обо мне</h2>
           <p class="section-sub">Коротко о том, кто будет заниматься с вашим ребёнком.</p>
@@ -1204,7 +2008,7 @@ body.scrolled .logo-img img {
       </section>
 
             <!-- Отзывы -->
-      <section class="section reviews-section">
+      <section class='section' class="section reviews-section">
         <div class="section-header">
           <h2 class="section-title">Отзывы родителей</h2>
           <p class="section-sub">Немного живых сообщений и отзывов о занятиях.</p>
@@ -1261,7 +2065,7 @@ body.scrolled .logo-img img {
 
       
       <!-- Оставить отзыв -->
-      <section class="section feedback-section" id="feedback">
+      <section class='section' class="section feedback-section" id="feedback">
         <div class="section-header">
           <h2 class="section-title">Оставить отзыв</h2>
           <p class="section-sub">
@@ -1296,7 +2100,7 @@ body.scrolled .logo-img img {
       </section>
 
 <!-- Контакты --><!-- Контакты -->
-      <section class="section">
+      <section class='section' class="section">
         <div class="section-header">
           <h2 class="section-title">Контакты и запись</h2>
           <p class="section-sub">Ответим на вопросы, подберём удобное время, обсудим формат занятий.</p>
@@ -1439,6 +2243,912 @@ document.addEventListener('scroll', () => {
   <img src="https://img.icons8.com/?size=512&id=16713&format=png" width="24" />
   Написать
 </a>
+
+
+<script>
+// Scroll reveal logic
+const revealEls = document.querySelectorAll('.card, .review-item');
+function revealOnScroll() {
+  const trigger = window.innerHeight * 0.88;
+  revealEls.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < trigger) el.classList.add('visible','reveal');
+  });
+}
+document.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
+
+
+<script>
+// Slide menu toggle
+const burger = document.querySelector('.burger');
+const scrim = document.querySelector('.scrim');
+
+if (burger) {
+  burger.addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+  });
+}
+if (scrim) {
+  scrim.addEventListener('click', () => {
+    document.body.classList.remove('menu-open');
+  });
+}
+</script>
+
+
+<script>
+// PARALLAX BG
+document.addEventListener('scroll', () => {
+  const y = window.scrollY * 0.3;
+  const bg = document.querySelector('.parallax-bg');
+  if (bg) bg.style.transform = `translateY(${y}px)`;
+});
+
+// AUTO SCROLL TO SECTIONS
+document.querySelectorAll('.menu-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.body.classList.remove('menu-open');
+    const id = link.getAttribute('data-target');
+    const el = document.querySelector(id);
+    if (el) window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+  });
+});
+
+// GYROSCOPE 3D TILT (iPhone/Android)
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', e => {
+    const x = e.gamma / 30;
+    const y = e.beta / 30;
+    document.querySelectorAll('.gyro-tilt').forEach(el => {
+      el.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+  });
+}
+</script>
+
+
+<script>
+// SCROLL PROGRESS BAR
+const bar = document.getElementById('scroll-progress');
+document.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  bar.style.width = scrolled + "%";
+});
+
+// SPLASH SCREEN
+window.addEventListener('load', () => {
+  const s = document.getElementById('splash');
+  setTimeout(() => { s.style.opacity = 0; }, 200);
+  setTimeout(() => { s.style.display='none'; }, 700);
+});
+
+// PARTICLES
+const canvas = document.createElement('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+canvas.id = "particles";
+document.body.appendChild(canvas);
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+for (let i=0; i<50; i++){
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*3+1,
+    dx: (Math.random()-0.5)*0.7,
+    dy: (Math.random()-0.5)*0.7
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = "rgba(100,140,255,0.25)";
+    ctx.fill();
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width) p.dx*=-1;
+    if(p.y<0||p.y>canvas.height) p.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+<script>
+// TIME‑THEME
+const hour = new Date().getHours();
+if (hour >= 6 && hour < 12) document.body.classList.add('morning');
+else if (hour >= 12 && hour < 18) document.body.classList.add('evening');
+else document.body.classList.add('night');
+
+// REWARD STARS
+function dropStar() {
+  const star = document.createElement('div');
+  star.className = 'reward-star';
+  star.innerHTML = '⭐';
+  document.body.appendChild(star);
+  setTimeout(()=>star.remove(),1200);
+}
+document.addEventListener('click', dropStar);
+
+// LEVEL BADGE
+let level = 1;
+const levelBox = document.createElement('div');
+levelBox.className = 'level-badge';
+levelBox.innerText = 'Уровень: ' + level;
+document.body.appendChild(levelBox);
+setInterval(()=> {
+  level++;
+  levelBox.innerText = 'Уровень: ' + level;
+  dropStar();
+}, 15000);
+
+// SECTION SLIDE APPEAR
+function revealSections(){
+  document.querySelectorAll('.section').forEach(sec=>{
+    const top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight * 0.85) sec.classList.add('visible');
+  });
+}
+document.addEventListener('scroll', revealSections);
+setTimeout(revealSections,300);
+
+// SOUND FEEDBACK
+const clickSound = new Audio("https://cdn.pixabay.com/audio/2021/08/04/audio_5b57cdc5de.mp3");
+document.addEventListener('click', ()=> clickSound.play());
+
+// MINI GAME — catch the apple
+const apple = document.createElement('div');
+apple.id="apple-game";
+apple.innerHTML="🍎";
+document.body.appendChild(apple);
+
+apple.addEventListener('click', ()=>{
+  dropStar();
+  level += 5;
+  levelBox.innerText = "Уровень: " + level;
+});
+
+// random apple movement
+setInterval(()=>{
+  const x = Math.random() * (window.innerWidth - 40);
+  const y = Math.random() * (window.innerHeight - 200);
+  apple.style.transform = `translate(${x}px, ${y}px)`;
+}, 2500);
+</script>
+
+
+<script>
+// PROFILE WIDGET
+const profile = document.createElement('div');
+profile.id = 'child-profile';
+profile.innerHTML = '<img src="https://i.imgur.com/0y8Ftya.png"/><div><b>Ученик:</b> Миша</div>';
+document.body.appendChild(profile);
+
+// ACHIEVEMENTS
+const achieves = document.createElement('div');
+achieves.id="achievements";
+achieves.innerHTML = "<b>Достижения:</b><br>⭐ Первое задание<br>🌟 5 уровней<br>🏆 Поймал яблоко!";
+document.body.appendChild(achieves);
+
+// RANDOM STICKERS
+function showSticker() {
+  const st = document.createElement('div');
+  st.className='sticker';
+  const list = ['🍎','📘','🎉','✨','💡','🦄','🌈'];
+  st.innerHTML = list[Math.floor(Math.random()*list.length)];
+  document.body.appendChild(st);
+  setTimeout(()=>st.remove(),1500);
+}
+setInterval(showSticker, 20000);
+
+// QUIET MODE after 20:00
+const hour = new Date().getHours();
+if (hour >= 20) {
+  document.body.classList.add('quiet');
+}
+
+// ASSISTANT BUBBLE
+const bubble = document.createElement('div');
+bubble.id='assistant-bubble';
+bubble.innerHTML='Привет! Я помогу тебе учиться. Начнем?';
+document.body.appendChild(bubble);
+setTimeout(()=>bubble.remove(),7000);
+</script>
+
+
+<script>
+// PARENT DASHBOARD
+const parentBtn = document.createElement('div');
+parentBtn.id='parent-dashboard-btn';
+parentBtn.innerText='Родитель';
+document.body.appendChild(parentBtn);
+
+const parentPanel = document.createElement('div');
+parentPanel.id='parent-panel';
+parentPanel.innerHTML='<h3>Кабинет родителя</h3><p>Прогресс ребенка:</p><ul><li>Уровней: 12</li><li>Поймано яблок: 4</li><li>Достижений: 3</li></ul>';
+document.body.appendChild(parentPanel);
+
+parentBtn.addEventListener('click', ()=> {
+  document.body.classList.toggle('parent-open');
+});
+
+// PROGRESS MAP
+const map = document.createElement('div');
+map.id='progress-map';
+map.innerHTML='📍 Карта прогресса: 12 этапов';
+document.body.appendChild(map);
+
+// VIRTUAL PET
+const pet = document.createElement('div');
+pet.id='pet';
+pet.innerHTML='🐶';
+document.body.appendChild(pet);
+
+// Pet grows every 20s
+let petSize = 48;
+setInterval(()=> {
+  petSize += 2;
+  pet.style.fontSize = petSize + 'px';
+}, 20000);
+
+// THEME SWITCHER
+const themeBox = document.createElement('div');
+themeBox.id='theme-switcher';
+themeBox.innerHTML='Темы: 🌲 🌊 🌌';
+document.body.appendChild(themeBox);
+
+themeBox.addEventListener('click', ()=>{
+  const themes=['theme-forest','theme-sea','theme-space'];
+  const current=themes.find(t=>document.body.classList.contains(t));
+  let idx=current?themes.indexOf(current):0;
+  document.body.classList.remove(...themes);
+  document.body.classList.add(themes[(idx+1)%3]);
+});
+
+// MATH MINI-GAME
+const mathGame = document.createElement('div');
+mathGame.id='math-game';
+mathGame.innerHTML='🎲 Пример!';
+document.body.appendChild(mathGame);
+
+mathGame.addEventListener('click', ()=>{
+  const a = Math.floor(Math.random()*9)+1;
+  const b = Math.floor(Math.random()*9)+1;
+  const ans = prompt(`${a} + ${b} = ?`);
+  if (ans == a+b) alert('Молодец!');
+  else alert('Попробуй еще!');
+});
+</script>
+
+
+<script>
+// XP + COINS
+let xp = 0;
+let coins = 20;
+
+const hud = document.createElement('div');
+hud.id = 'hud';
+hud.innerHTML = `⭐ XP: <b>${xp}</b> • 🪙 <b>${coins}</b>`;
+document.body.appendChild(hud);
+
+function addXP(amount){
+  xp += amount;
+  hud.innerHTML = `⭐ XP: <b>${xp}</b> • 🪙 <b>${coins}</b>`;
+}
+function addCoins(amount){
+  coins += amount;
+  hud.innerHTML = `⭐ XP: <b>${xp}</b> • 🪙 <b>${coins}</b>`;
+}
+
+// Sticker shop
+const shop = document.createElement('div');
+shop.id='shop';
+shop.innerHTML='🛒 Магазин';
+document.body.appendChild(shop);
+
+const shopPopup = document.createElement('div');
+shopPopup.id='shop-popup';
+shopPopup.innerHTML='<b>Магазин наклеек</b><br><br>✨ Единорог — 10 монет<br>🍎 Яблочко — 5 монет<br>🌈 Радуга — 8 монет<br><br><i>Нажмите, чтобы купить</i>';
+document.body.appendChild(shopPopup);
+
+shop.addEventListener('click', ()=> {
+  document.body.classList.toggle('shop-open');
+});
+
+// World map
+const world = document.createElement('div');
+world.id='world-map';
+world.innerHTML='<div id="world-map-content"><h3>🌍 Карта мира</h3><p>Каждый этап — новая приключение!</p></div>';
+document.body.appendChild(world);
+
+map.addEventListener('click', ()=> {
+  world.style.display='flex';
+});
+world.addEventListener('click', ()=> world.style.display='none');
+
+// Quests
+const quests = document.createElement('div');
+quests.id='quests';
+quests.innerHTML='<b>Квесты:</b><br>• Поймать яблоко (5 XP)<br>• Решить 3 примера (10 XP)<br>• Найти наклейку (3 XP)';
+document.body.appendChild(quests);
+
+// Weather FX
+function createSnow(){
+  for(let i=0;i<20;i++){
+    const fl = document.createElement('div');
+    fl.className='snowflake';
+    fl.innerHTML='❄';
+    fl.style.left = Math.random()*100 + '%';
+    fl.style.animationDuration = (Math.random()*5+5)+'s';
+    document.body.appendChild(fl);
+  }
+}
+createSnow();
+
+// Page transitions
+const transition = document.createElement('div');
+transition.className='page-transition';
+document.body.appendChild(transition);
+
+document.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', e=>{
+    e.preventDefault();
+    transition.classList.add('active');
+    setTimeout(()=> window.location = a.href, 500);
+  });
+});
+
+// Integrations
+document.addEventListener('click', ()=> addXP(1));
+apple.addEventListener('click', ()=> addXP(5));
+mathGame.addEventListener('click', ()=> addXP(3));
+</script>
+
+
+<script>
+// === PREMIUM 11.0 — Full App Architecture with Local DB & Profile System ===
+
+// --- LOCAL DATABASE SETUP ---
+function loadDB(){
+  let db = localStorage.getItem("edu_app_db");
+  if(!db){
+    const empty = { users:{} };
+    localStorage.setItem("edu_app_db", JSON.stringify(empty));
+    return empty;
+  }
+  return JSON.parse(db);
+}
+function saveDB(db){
+  localStorage.setItem("edu_app_db", JSON.stringify(db));
+}
+
+let DB = loadDB();
+
+// --- CREATE USER ---
+function createUser(name, avatar){
+  const id = name.toLowerCase().trim();
+  DB.users[id] = {
+    name,
+    avatar,
+    xp: 0,
+    coins: 0,
+    level: 1,
+    stickers: [],
+    pet: { size: 48, mood: "happy" },
+    theme: "auto",
+    map: { stage: 1 },
+    quests: { doneToday: 0 },
+    created: Date.now()
+  };
+  saveDB(DB);
+  return id;
+}
+
+// --- LOAD USER ---
+let currentUser = null;
+function loadUser(id){
+  currentUser = DB.users[id];
+  saveDB(DB);
+}
+
+// --- SAVE USER ---
+function saveUser(){
+  const id = currentUser.name.toLowerCase();
+  DB.users[id] = currentUser;
+  saveDB(DB);
+}
+
+// --- LOGIN SCREEN ---
+const loginScreen = document.createElement('div');
+loginScreen.style.cssText = `
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:white; z-index:9000; display:flex;
+  justify-content:center; align-items:center; flex-direction:column;
+`;
+loginScreen.innerHTML = `
+  <h2>Выбери ученика</h2>
+  <div id="user-list"></div>
+  <br>
+  <button id="create-user-btn" style="padding:10px 20px;font-size:16px;">Создать нового</button>
+`;
+document.body.appendChild(loginScreen);
+
+// UPDATE USER LIST
+function refreshUserList(){
+  const wrap = loginScreen.querySelector("#user-list");
+  wrap.innerHTML = "";
+  Object.keys(DB.users).forEach(id=>{
+    const u = DB.users[id];
+    const div = document.createElement("div");
+    div.style.cssText="margin:10px;padding:10px;border:1px solid #ccc;border-radius:10px;cursor:pointer;";
+    div.innerHTML = `${u.avatar} <b>${u.name}</b><br>Уровень ${u.level}`;
+    div.onclick = ()=>{
+      loadUser(id);
+      loginScreen.remove();
+      initializeUserUI();
+    };
+    wrap.appendChild(div);
+  });
+}
+refreshUserList();
+
+// CREATE USER FLOW
+document.getElementById("create-user-btn").onclick = ()=>{
+  const name = prompt("Имя ученика:");
+  if(!name) return;
+  const avatars = ["🐶","🐱","🦊","🐼","🦄","🐵","🐹"];
+  const avatar = avatars[Math.floor(Math.random()*avatars.length)];
+  const id = createUser(name, avatar);
+  loadUser(id);
+  loginScreen.remove();
+  initializeUserUI();
+};
+
+// --- ACTIVATE USER DATA IN UI ---
+function initializeUserUI(){
+  // Update HUD
+  const hud = document.getElementById("hud");
+  hud.innerHTML = `⭐ XP: <b>${currentUser.xp}</b> • 🪙 <b>${currentUser.coins}</b>`;
+
+  // Update pet
+  const pet = document.getElementById("pet");
+  pet.style.fontSize = currentUser.pet.size+"px";
+  pet.innerHTML = currentUser.avatar || "🐶";
+}
+
+// --- AUTO SAVE EVENTS ---
+document.addEventListener("click", ()=>{
+  if(currentUser){
+    currentUser.xp++;
+    saveUser();
+  }
+});
+</script>
+
+
+<script>
+// === PREMIUM 12.0 — World Map + Lesson Engine ===
+
+// LESSON DATABASE (JSON-based)
+const LESSONS = [
+  { id:1, title:"Сложение 1", reward:5 },
+  { id:2, title:"Сложение 2", reward:7 },
+  { id:3, title:"Вычитание 1", reward:8 },
+  { id:4, title:"Сравнение чисел", reward:10 },
+  { id:5, title:"Примеры со скобками", reward:12 }
+];
+
+// ADD MAP BUTTON
+const mapBtn = document.createElement('div');
+mapBtn.id="world-map-btn";
+mapBtn.innerText="🌍 Карта уроков";
+document.body.appendChild(mapBtn);
+
+// MAP MODAL
+const modal = document.createElement('div');
+modal.id="lesson-map-modal";
+modal.innerHTML='<div id="lesson-map"><h3>Карта уроков</h3><div id="lesson-list"></div></div>';
+document.body.appendChild(modal);
+
+const lessonList = modal.querySelector('#lesson-list');
+
+// UPDATE MAP
+function renderLessonMap(){
+  lessonList.innerHTML="";
+  const stage = currentUser.map.stage;
+  LESSONS.forEach(lesson=>{
+    const node = document.createElement('div');
+    node.className="lesson-node";
+    if(lesson.id > stage) node.classList.add('locked');
+    node.innerText = lesson.title;
+    node.onclick = ()=>{
+      if(lesson.id > stage) return;
+      startLesson(lesson);
+    };
+    lessonList.appendChild(node);
+  });
+}
+
+mapBtn.onclick = ()=>{
+  renderLessonMap();
+  modal.style.display="flex";
+};
+
+modal.onclick = e=>{
+  if(e.target===modal) modal.style.display="none";
+};
+
+// LESSON ENGINE
+function startLesson(lesson){
+  const a = Math.floor(Math.random()*10)+1;
+  const b = Math.floor(Math.random()*10)+1;
+  const ans = prompt(lesson.title + ": \nСколько будет " + a + " + " + b + "?");
+  if(ans == a+b){
+    alert("Молодец! +" + lesson.reward + " XP");
+    currentUser.xp += lesson.reward;
+    currentUser.map.stage = Math.max(currentUser.map.stage, lesson.id+1);
+    saveUser();
+  } else {
+    alert("Попробуем ещё!");
+  }
+}
+</script>
+
+
+<script>
+// === PREMIUM 13.0 ===
+
+// VOICE ASSISTANT (text-to-speech)
+const voiceBtn = document.createElement('div');
+voiceBtn.id="voice-btn";
+voiceBtn.innerText="🎤 Помощник";
+document.body.appendChild(voiceBtn);
+
+voiceBtn.onclick = ()=>{
+  const msg = new SpeechSynthesisUtterance("Привет, я помогу тебе решать задания. Давай попробуем пройти новые уроки!");
+  speechSynthesis.speak(msg);
+};
+
+// PARENT ANALYTICS
+const analyticsBtn = document.createElement('div');
+analyticsBtn.id="analytics-btn";
+analyticsBtn.innerText="📊 Аналитика";
+document.body.appendChild(analyticsBtn);
+
+const parentAnalytics = document.createElement('div');
+parentAnalytics.id="parent-analytics";
+parentAnalytics.innerHTML = `
+  <h3>Статистика</h3>
+  <p><b>Ученик:</b> <span id='an-name'></span></p>
+  <p><b>Уровень:</b> <span id='an-level'></span></p>
+  <p><b>XP:</b> <span id='an-xp'></span></p>
+  <p><b>Монет:</b> <span id='an-coins'></span></p>
+  <p><b>Уроков пройдено:</b> <span id='an-lessons'></span></p>
+`;
+document.body.appendChild(parentAnalytics);
+
+analyticsBtn.onclick = ()=>{
+  document.body.classList.toggle("analytics-open");
+  if(currentUser){
+    document.getElementById("an-name").innerText = currentUser.name;
+    document.getElementById("an-level").innerText = currentUser.level;
+    document.getElementById("an-xp").innerText = currentUser.xp;
+    document.getElementById("an-coins").innerText = currentUser.coins;
+    document.getElementById("an-lessons").innerText = currentUser.map.stage - 1;
+  }
+};
+
+// PET 2.0 — feed & play
+const petArea = document.createElement('div');
+petArea.id="pet-area";
+petArea.innerHTML = `
+  🐾 Питомец:<br>
+  <button id='feed-btn'>Кормить</button>
+  <button id='play-btn'>Играть</button>
+`;
+document.body.appendChild(petArea);
+
+document.getElementById("feed-btn").onclick = ()=>{
+  if(currentUser){
+    currentUser.pet.size += 2;
+    saveUser();
+    alert("Питомец доволен! + рост");
+  }
+};
+
+document.getElementById("play-btn").onclick = ()=>{
+  if(currentUser){
+    alert("Питомец играет и рад!");
+    currentUser.pet.mood = "happy";
+    saveUser();
+  }
+};
+</script>
+
+
+<script>
+// WORD GAME
+const wgBtn = document.createElement('div');
+wgBtn.id='word-game-btn';
+wgBtn.innerText='🔤 Собери слово';
+document.body.appendChild(wgBtn);
+
+wgBtn.onclick = ()=>{
+  const letters = ['К','О','Т'];
+  const ans = prompt("Собери слово из букв: К, О, Т");
+  if(ans && ans.toUpperCase()==='КОТ'){
+    alert("Молодец! +10 XP");
+    currentUser.xp += 10;
+    saveUser();
+  } else alert("Попробуем снова!");
+};
+
+// ANIMATED LESSON
+function animatedLesson(text){
+  const box = document.getElementById('lesson-anim');
+  box.style.display='flex';
+  box.innerText=text;
+  setTimeout(()=> box.style.display='none', 2000);
+}
+
+document.addEventListener('startLessonAnimation', e=>{
+  animatedLesson("Начинаем урок!");
+});
+
+// TTS for lessons
+function speak(text){
+  const msg = new SpeechSynthesisUtterance(text);
+  speechSynthesis.speak(msg);
+}
+
+// Reward Chest
+const chest = document.createElement('div');
+chest.id='reward-chest';
+chest.innerHTML='🎁 Сундук';
+document.body.appendChild(chest);
+
+chest.onclick = ()=>{
+  const reward = Math.floor(Math.random()*15)+5;
+  alert("Открыл сундук! +" + reward + " XP");
+  currentUser.xp += reward;
+  saveUser();
+};
+</script>
+
+
+<script>
+// === Talking Mascot ===
+const mascot = document.createElement('div');
+mascot.id = "mascot";
+mascot.innerHTML = '<img src="https://i.imgur.com/KN8Z3oL.png"><div id="mascot-text">Привет!</div>';
+document.body.appendChild(mascot);
+
+mascot.onclick = ()=>{
+  const phrases = [
+    "Ты отлично учишься!",
+    "Давай попробуем новый урок!",
+    "Я верю в тебя!",
+    "Хочешь задачку?",
+    "Нажми на карту уроков!"
+  ];
+  const p = phrases[Math.floor(Math.random()*phrases.length)];
+  document.getElementById("mascot-text").innerText = p;
+  const msg = new SpeechSynthesisUtterance(p);
+  speechSynthesis.speak(msg);
+};
+
+// === Lesson Branch System ===
+const branchesBtn = document.createElement('div');
+branchesBtn.id="lesson-branches-btn";
+branchesBtn.innerText="📚 Разделы уроков";
+document.body.appendChild(branchesBtn);
+
+const branchesModal = document.createElement('div');
+branchesModal.id="branches-modal";
+branchesModal.innerHTML = `
+<div id="branches-box">
+  <h3>Разделы</h3>
+  <div class="branch" data-type="math">🧮 Математика</div>
+  <div class="branch" data-type="logic">🧠 Логика</div>
+  <div class="branch" data-type="reading">📖 Чтение</div>
+  <div class="branch" data-type="memory">🧩 Память</div>
+</div>
+`;
+document.body.appendChild(branchesModal);
+
+branchesBtn.onclick = ()=> branchesModal.style.display="flex";
+branchesModal.onclick = e=>{ if(e.target===branchesModal) branchesModal.style.display="none"; };
+
+document.querySelectorAll('.branch').forEach(b=>{
+  b.onclick = ()=>{
+    const t = b.dataset.type;
+    alert("Открываем модуль: " + t);
+    branchesModal.style.display="none";
+  };
+});
+
+// === Achievements System ===
+const achBtn = document.createElement('div');
+achBtn.id="achievements-btn";
+achBtn.innerText="🏆 Достижения";
+document.body.appendChild(achBtn);
+
+const achPanel = document.createElement('div');
+achPanel.id="achievements-panel";
+achPanel.innerHTML = `
+<h3>Достижения</h3>
+<ul id="ach-list"></ul>
+`;
+document.body.appendChild(achPanel);
+
+achBtn.onclick = ()=>{
+  document.body.classList.toggle("achievements-open");
+  updateAchievements();
+};
+
+function updateAchievements(){
+  const list = document.getElementById("ach-list");
+  list.innerHTML="";
+  if(!currentUser) return;
+  if(currentUser.xp>=50) list.innerHTML += "<li>⭐ Ученик I уровня</li>";
+  if(currentUser.xp>=100) list.innerHTML += "<li>🌟 Ученик II уровня</li>";
+  if(currentUser.map.stage>3) list.innerHTML += "<li>🏆 Пройдено 3 урока</li>";
+}
+
+// === Math Engine 2.0 ===
+function startAdvancedMath(){
+  const a = Math.floor(Math.random()*20)+1;
+  const b = Math.floor(Math.random()*20)+1;
+  const c = Math.floor(Math.random()*3);
+  let sign = c===0?"+":c===1?"-":"×";
+  const correct = sign==="+"? a+b : sign==="-"? a-b : a*b;
+  const ans = prompt(`Реши: ${a} ${sign} ${b} = ?`);
+  if(ans==correct){
+    alert("Отлично! +12 XP");
+    currentUser.xp += 12;
+    saveUser();
+  } else alert("Попробуем ещё!");
+}
+
+// Mascot offers advanced math randomly
+setInterval(()=>{
+  if(currentUser && Math.random()>0.7){
+    mascot.click();
+  }
+},10000);
+</script>
+
+
+<script>
+// MODULE LESSONS 16.0
+const modBtn = document.createElement('div');
+modBtn.id='module-lessons-btn';
+modBtn.innerText='📖 Уроки раздела';
+document.body.appendChild(modBtn);
+
+const modScreen = document.createElement('div');
+modScreen.id='module-screen';
+modScreen.innerHTML='<h2>Уроки раздела</h2><div id="module-list"></div>';
+document.body.appendChild(modScreen);
+
+const lessons = [
+  { title:"Математика: Сложение", content:"Урок + картинки" },
+  { title:"Логика: Последовательности", content:"Подбери правильный элемент" },
+  { title:"Память: Найди пару", content:"Игра на запоминание" }
+];
+
+modBtn.onclick = ()=>{
+  const list = modScreen.querySelector('#module-list');
+  list.innerHTML="";
+  lessons.forEach(l=>{
+    const c = document.createElement('div');
+    c.className='lesson-card';
+    c.innerText=l.title;
+    c.onclick = ()=> alert("Запуск урока: " + l.title);
+    list.appendChild(c);
+  });
+  modScreen.style.display='block';
+};
+
+modScreen.onclick = e=>{
+  if(e.target===modScreen) modScreen.style.display='none';
+};
+</script>
+
+
+<script>
+// === FULLSCREEN LESSON ENGINE ===
+const engine = document.createElement('div');
+engine.id='lesson-engine';
+document.body.appendChild(engine);
+
+function openLesson(title, contentHTML){
+  engine.innerHTML = `
+    <div class='lesson-header'>${title}</div>
+    <div>${contentHTML}</div>
+    <br><button id='close-lesson' style='padding:10px 18px;font-size:16px;'>Закрыть</button>
+  `;
+  engine.style.display='block';
+  document.getElementById('close-lesson').onclick = ()=> engine.style.display='none';
+  speak("Начинаем урок: " + title);
+}
+
+// Override default module screen action
+document.querySelectorAll('.lesson-card').forEach(card=>{
+  card.onclick = ()=>{
+    if(card.innerText.includes("Сложение"))
+      openMathPictureLesson();
+    else if(card.innerText.includes("Последовательности"))
+      openLogicSequenceLesson();
+    else if(card.innerText.includes("Найди пару"))
+      openMemoryGameLesson();
+    else
+      openLesson(card.innerText, "Урок в разработке.");
+  };
+});
+
+// === Picture Math Lesson ===
+function openMathPictureLesson(){
+  const html = `
+    <div class='pic-lesson'>
+      <p>Посчитай яблоки на картинке!</p>
+      <img src='https://i.imgur.com/1Q9Z1Zm.png'>
+      <br><button id='solve-btn'>Ответить</button>
+    </div>
+  `;
+  openLesson("Математика: яблоки", html);
+  setTimeout(()=>{
+    document.getElementById('solve-btn').onclick = ()=>{
+      const ans = prompt("Сколько яблок?");
+      if(ans=='6'){ alert("Правильно! +10 XP"); currentUser.xp+=10; saveUser(); }
+      else alert("Попробуем ещё!");
+    };
+  },200);
+}
+
+// === Logic Sequence Lesson ===
+function openLogicSequenceLesson(){
+  const html = `
+    <p>Найди, что идет следующим:</p>
+    <img src='https://i.imgur.com/6VKYd9Y.png' class='pic-lesson'>
+    <br><button id='seq-btn'>Выбрать</button>
+  `;
+  openLesson("Логика: последовательности", html);
+  setTimeout(()=>{
+    document.getElementById('seq-btn').onclick = ()=>{
+      const ans = prompt("Что будет следующим?");
+      alert("Записал твой ответ!");
+    };
+  },200);
+}
+
+// === Memory Game Stub ===
+function openMemoryGameLesson(){
+  const html = `
+    <p>Запомни последовательность:</p>
+    <div>🍎 🍌 🍒</div>
+    <br><button id='mem-btn'>Повторить</button>
+  `;
+  openLesson("Память: повтори", html);
+  setTimeout(()=>{
+    document.getElementById('mem-btn').onclick = ()=>{
+      const ans = prompt("Повтори последовательность:");
+      if(ans.replace(/ /g,'')=="🍎🍌🍒") alert("Отлично! +8 XP");
+      else alert("Попробуем ещё!");
+    };
+  },200);
+}
+</script>
 
 </body>
 </html>
