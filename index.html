@@ -869,6 +869,126 @@
   }
 }
 
+
+/* === PREMIUM MOBILE ADAPTATION v1.0 === */
+
+/* Adaptive typography for premium look */
+@media (max-width: 360px) {
+  .hero-title { font-size: 26px !important; }
+  .hero-subtitle { font-size: 16px !important; }
+  .card-text { font-size: 15px !important; }
+}
+@media (min-width: 361px) and (max-width: 420px) {
+  .hero-title { font-size: 28px !important; }
+  .hero-subtitle { font-size: 17px !important; }
+  .card-text { font-size: 16px !important; }
+}
+@media (min-width: 421px) and (max-width: 768px) {
+  .hero-title { font-size: 30px !important; }
+  .hero-subtitle { font-size: 18px !important; }
+  .card-text { font-size: 17px !important; }
+}
+
+/* Gentle card hover/touch scaling (premium feel) */
+.card {
+  transition: transform .25s ease, box-shadow .25s ease !important;
+}
+.card:active {
+  transform: scale(0.97) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
+}
+
+/* Extra air for large phones */
+@media (min-width: 430px) {
+  .cards-grid {
+    padding: 0 22px !important;
+  }
+}
+
+/* Premium soft shadows */
+.card {
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08) !important;
+}
+
+.review-item {
+  box-shadow: 0 10px 24px rgba(0,0,0,0.07) !important;
+}
+
+/* Enhanced logo spacing on large screens */
+@media (min-width: 430px) {
+  .logo-block { padding: 18px 30px !important; }
+  .logo-img img { max-width: 260px !important; }
+}
+
+/* Smooth page fade-in effect */
+body {
+  opacity: 0;
+  animation: bodyFade .6s ease forwards;
+}
+@keyframes bodyFade {
+  to { opacity: 1; }
+}
+
+
+/* === PREMIUM ADAPTATION 2.0 — Glass, Floating WhatsApp, Micro Animations, 3D Logo === */
+
+/* Glass header */
+@media (max-width: 768px) {
+  header {
+    backdrop-filter: blur(14px) brightness(1.15);
+    background: rgba(255,255,255,0.55) !important;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  }
+}
+
+/* Floating WhatsApp button */
+.floating-wa {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  background: #25D366;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 999;
+  animation: waPop .6s ease forwards;
+}
+@keyframes waPop {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Floating WA visible only on mobile */
+@media (min-width: 769px) {
+  .floating-wa { display: none !important; }
+}
+
+/* Micro animations for titles */
+.hero-title, .section-title {
+  animation: fadeSlide .7s ease forwards;
+}
+@keyframes fadeSlide {
+  0% { opacity:0; transform: translateY(12px); }
+  100% { opacity:1; transform: translateY(0); }
+}
+
+/* Gradient hero background premium */
+.hero {
+  background: linear-gradient(180deg,#e9f0ff,#ffffff);
+}
+
+/* 3D lift on scroll for logo */
+body.scrolled .logo-img img {
+  transform: scale(1.02) translateY(-6px) rotateX(3deg);
+  transition: 0.35s ease;
+}
+
 </style>
 </head>
 <body>
@@ -1313,6 +1433,12 @@ document.addEventListener('scroll', () => {
   else document.body.classList.remove('scrolled');
 });
 </script>
+
+
+<a href="https://wa.me/79099430970" class="floating-wa">
+  <img src="https://img.icons8.com/?size=512&id=16713&format=png" width="24" />
+  Написать
+</a>
 
 </body>
 </html>
