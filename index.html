@@ -989,9 +989,167 @@ body.scrolled .logo-img img {
   transition: 0.35s ease;
 }
 
+
+/* === PREMIUM ADAPTATION 3.0 — Dark Mode, Scroll Reveal, Premium Menu === */
+
+/* Auto dark mode */
+@media (prefers-color-scheme: dark) {
+  body { background:#0f1115; color:#e8ecf3; }
+  header { background:rgba(20,22,28,0.55) !important; }
+  .hero { background:linear-gradient(180deg,#1c1f26,#0f1115) !important; }
+  .card, .review-item {
+    background:#1c1f26 !important;
+    color:#e8ecf3 !important;
+    box-shadow:0 10px 24px rgba(0,0,0,0.4) !important;
+  }
+}
+
+/* Scroll reveal for cards */
+.reveal {opacity:0; transform:translateY(40px); transition:0.6s ease;}
+.reveal.visible {opacity:1; transform:translateY(0);}
+
+/* Premium slide-in mobile menu placeholder if needed */
+
+
+/* === PREMIUM ADAPTATION 4.0 — Slide Menu, Scrim, Magnetic Hover, Dynamic Header === */
+
+/* Burger button */
+.burger {
+  position: fixed;
+  top: 14px;
+  left: 16px;
+  z-index: 2000;
+  width: 34px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.burger div {
+  height: 4px;
+  background: var(--text-main);
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+/* Menu open animation */
+.menu-open .burger div:nth-child(1) { transform: rotate(45deg) translateY(10px); }
+.menu-open .burger div:nth-child(2) { opacity: 0; }
+.menu-open .burger div:nth-child(3) { transform: rotate(-45deg) translateY(-10px); }
+
+/* Slide-in menu panel */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 240px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 4px 0 18px rgba(0,0,0,0.12);
+  padding: 60px 20px;
+  transition: 0.35s ease;
+  z-index: 1800;
+}
+body.menu-open .side-menu {
+  left: 0;
+}
+
+/* Scrim overlay */
+.scrim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease;
+  z-index: 1500;
+}
+body.menu-open .scrim {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Magnetic hover on cards (premium UI) */
+@media (min-width: 390px) and (max-width: 768px) {
+  .card {
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease !important;
+  }
+  .card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.14);
+  }
+}
+
+/* Dynamic header transparency */
+header {
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+body.scrolled header {
+  background: rgba(255,255,255,0.75) !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+/* Dark-mode support for new elements */
+@media (prefers-color-scheme: dark) {
+  .side-menu {
+    background: #1c1f26;
+    color: #e9ecf5;
+  }
+  .burger div {
+    background: #e9ecf5 !important;
+  }
+}
+
+
+/* === PREMIUM ADAPTATION 5.0 — Parallax, Gyro, Spring Cards, AutoScroll, Retina === */
+
+/* Parallax background */
+.parallax-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('https://i.imgur.com/nZ7kU0i.jpg') center/cover no-repeat;
+  z-index: -1;
+  transform: translateY(0);
+  transition: transform 0.2s ease-out;
+  opacity: 0.25;
+}
+
+/* Spring physics card tap */
+.card:active {
+  transform: scale(0.94) rotateX(2deg);
+  transition: 0.15s cubic-bezier(.2,.8,.2,1);
+}
+
+/* Retina optimization */
+img { image-rendering: -webkit-optimize-contrast; }
+
+/* Auto-scroll section buttons */
+.menu-link { cursor: pointer; }
+
+/* Gyroscope tilt effect */
+.gyro-tilt {
+  transition: transform 0.15s ease;
+  transform-style: preserve-3d;
+}
+
 </style>
 </head>
-<body>
+<body><div class='parallax-bg'></div>
+<div class="burger"><div></div><div></div><div></div></div>
+<div class="side-menu">
+  <h3 style="margin-bottom:20px;">Меню</h3>
+  <a href="#about" style="display:block;margin-bottom:12px;">О занятиях</a>
+  <a href="#services" style="display:block;margin-bottom:12px;">Курсы</a>
+  <a href="#reviews" style="display:block;margin-bottom:12px;">Отзывы</a>
+  <a href="https://wa.me/79099430970" style="display:block;margin-top:20px;font-weight:600;">Связаться</a>
+</div>
+<div class="scrim"></div>
+
   <div class="page">
     <header>
       <div class="logo-block">
@@ -1439,6 +1597,71 @@ document.addEventListener('scroll', () => {
   <img src="https://img.icons8.com/?size=512&id=16713&format=png" width="24" />
   Написать
 </a>
+
+
+<script>
+// Scroll reveal logic
+const revealEls = document.querySelectorAll('.card, .review-item');
+function revealOnScroll() {
+  const trigger = window.innerHeight * 0.88;
+  revealEls.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < trigger) el.classList.add('visible','reveal');
+  });
+}
+document.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
+
+
+<script>
+// Slide menu toggle
+const burger = document.querySelector('.burger');
+const scrim = document.querySelector('.scrim');
+
+if (burger) {
+  burger.addEventListener('click', () => {
+    document.body.classList.toggle('menu-open');
+  });
+}
+if (scrim) {
+  scrim.addEventListener('click', () => {
+    document.body.classList.remove('menu-open');
+  });
+}
+</script>
+
+
+<script>
+// PARALLAX BG
+document.addEventListener('scroll', () => {
+  const y = window.scrollY * 0.3;
+  const bg = document.querySelector('.parallax-bg');
+  if (bg) bg.style.transform = `translateY(${y}px)`;
+});
+
+// AUTO SCROLL TO SECTIONS
+document.querySelectorAll('.menu-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.body.classList.remove('menu-open');
+    const id = link.getAttribute('data-target');
+    const el = document.querySelector(id);
+    if (el) window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+  });
+});
+
+// GYROSCOPE 3D TILT (iPhone/Android)
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', e => {
+    const x = e.gamma / 30;
+    const y = e.beta / 30;
+    document.querySelectorAll('.gyro-tilt').forEach(el => {
+      el.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+  });
+}
+</script>
 
 </body>
 </html>
