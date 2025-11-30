@@ -1595,7 +1595,7 @@ section { scroll-margin-top: 80px; }
 
 <h3>Фото занятий</h3>
 <div class="gallery spring">
-  <div class="gallery-track" id="galleryTrack">
+  <div class="gallery-track" id="galleryAuto" id="galleryTrack">
     <img src="https://i.imgur.com/2cQ8p5M.jpeg">
     <img src="https://i.imgur.com/nY8eM5A.jpeg">
     <img src="https://i.imgur.com/waB9t3e.jpeg">
@@ -2062,6 +2062,35 @@ setInterval(()=>{
  gi=(gi+1)%8;
  t.style.transform="translateX(" + (-gi*200) + "px)";
 },3000);
+</script>
+
+
+<section id="gallery" class="section">
+  <h2>Фото занятий</h2>
+  <div class="gallery-track" id="galleryAuto" style="display:flex;gap:15px;overflow-x:auto;">
+    <img src="img/photo1.jpg" style="width:200px;border-radius:12px;">
+    <img src="img/photo2.jpg" style="width:200px;border-radius:12px;">
+    <img src="img/photo3.jpg" style="width:200px;border-radius:12px;">
+    <img src="img/photo4.jpg" style="width:200px;border-radius:12px;">
+    <img src="img/photo5.jpg" style="width:200px;border-radius:12px;">
+    <img src="img/photo6.jpg" style="width:200px;border-radius:12px;">
+    <img src="img/photo7.jpg" style="width:200px;border-radius:12px;">
+    <img src="img/photo8.jpg" style="width:200px;border-radius:12px;">
+  </div>
+</section>
+
+
+<script>
+let gIndex=0;
+function autoSlide(){
+  const track=document.getElementById("galleryAuto");
+  if(!track) return;
+  const items=track.querySelectorAll("img");
+  gIndex=(gIndex+1)%items.length;
+  track.style.transition="transform 0.6s ease";
+  track.style.transform="translateX(" + (-gIndex*220) + "px)";
+}
+setInterval(autoSlide, 3000);
 </script>
 
 </body>
