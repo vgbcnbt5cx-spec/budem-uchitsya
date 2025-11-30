@@ -989,9 +989,343 @@ body.scrolled .logo-img img {
   transition: 0.35s ease;
 }
 
+
+/* === PREMIUM UPGRADE 2.0 === */
+/* Более воздушные секции, мягкие градиенты и аккуратные анимации */
+
+body {
+  background: radial-gradient(circle at top left, #e9f1ff 0, #f7fbff 50%, #ffffff 100%);
+}
+
+/* Центрируем и ограничиваем ширину секций, чтобы текст легче читался */
+.section,
+.reviews-section,
+.feedback-section {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Добавляем лёгкие разделители между блоками */
+.section + .section {
+  border-top: 1px solid rgba(130, 148, 190, 0.18);
+  padding-top: 24px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Акцентный подзаголовок */
+.section-sub {
+  font-size: 15px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* Улучшаем читаемость текста в карточках и блоках */
+.card-text,
+.contacts-main,
+.about-box,
+.note-box {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Плавное появление блоков при загрузке */
+.section,
+.hero,
+.about-box,
+.contacts-card,
+.card,
+.feedback-card,
+.reviews-carousel {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeInUp 0.55s ease forwards;
+}
+
+.section:nth-of-type(2),
+.section:nth-of-type(3),
+.section:nth-of-type(4) {
+  animation-delay: 0.06s;
+}
+.section:nth-of-type(5),
+.section:nth-of-type(6),
+.section:nth-of-type(7) {
+  animation-delay: 0.12s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Небольшое усиление кнопок */
+.btn-primary {
+  font-size: 15px;
+  padding: 10px 20px;
+}
+
+.contacts-cta .btn-primary {
+  padding: 10px 22px;
+}
+
+/* Плашки преимуществ */
+.pill {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Немного увеличиваем кегль заголовков на десктопе */
+@media (min-width: 900px) {
+  .hero-title {
+    font-size: 38px;
+  }
+  .section-title {
+    font-size: 27px;
+  }
+}
+
+/* Мягкая адаптация текстов на телефонах */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 26px;
+  }
+  .hero-sub {
+    font-size: 16px;
+  }
+  .section-title {
+    font-size: 21px;
+  }
+  .card-text,
+  .contacts-main,
+  .about-box,
+  .note-box {
+    font-size: 15px;
+  }
+  .hero {
+    margin-bottom: 26px;
+  }
+}
+
+/* Чуть более «премиальные» карточки */
+.card {
+  border: 1px solid rgba(190, 201, 228, 0.35);
+}
+
+/* Акцентируем плавающую кнопку WhatsApp */
+.floating-wa {
+  font-size: 15px;
+  padding: 12px 18px;
+  border-radius: 999px;
+}
+
+/* Чуть уменьшаем тень у плавающей кнопки на маленьких экранах */
+@media (max-width: 480px) {
+  .floating-wa {
+    padding: 11px 16px;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.16);
+  }
+}
+
+
+/* === PREMIUM UPGRADE 3.0 === */
+/* Эффекты параллакса, деликатные тени, улучшенный hero-блок */
+
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, #eaf1ff 0%, #ffffff 70%);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+
+.hero:before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  background: rgba(120,150,255,0.12);
+  border-radius: 50%;
+  filter: blur(45px);
+  animation: floatBlob 8s ease-in-out infinite;
+}
+
+@keyframes floatBlob {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(18px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.section {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 40px 28px;
+  margin-bottom: 36px;
+  box-shadow: 0 6px 20px rgba(80,110,160,0.08);
+}
+
+.card {
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(60,90,140,0.08);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(50,80,130,0.15);
+}
+
+.btn-primary {
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(30,150,70,0.25);
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.section-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 46px;
+  height: 3px;
+  background: linear-gradient(90deg, #5974ff 0%, #90a8ff 100%);
+  border-radius: 2px;
+}
+
+
+
+/* === PREMIUM UPGRADE 4.0 === */
+/* Фиксированное меню, плавный скролл, улучшенный футер и премиальные декоративные линии */
+
+/* --- Глобальный smooth scroll --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Фиксированное верхнее меню --- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 58px;
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  z-index: 999;
+  border-bottom: 1px solid rgba(130,148,190,0.18);
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: #3c4f7c;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.top-nav a:hover {
+  color: #5f78ff;
+}
+
+/* чтобы hero не залезал под меню */
+.hero {
+  margin-top: 58px;
+}
+
+/* --- Премиальные декоративные линии между секциями --- */
+.section {
+  position: relative;
+}
+
+.section:before {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #9ab0ff20, #5f78ff50, #9ab0ff20);
+}
+
+/* Убираем у первого блока */
+.section:first-of-type:before {
+  display: none;
+}
+
+/* --- Премиальный wave-footer --- */
+footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #d9e4ff, #f8faff);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(130,148,190,0.18);
+}
+
+footer:before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -40px;
+  width: 180%;
+  height: 180px;
+  background: url('data:image/svg+xml;utf8,<svg width="1440" height="320" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23bbc8ff55" d="M0,64L40,96C80,128,160,192,240,208C320,224,400,192,480,176C560,160,640,160,720,181.3C800,203,880,245,960,240C1040,235,1120,181,1200,160C1280,139,1360,149,1400,154.7L1440,160L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>');
+  background-size: cover;
+  opacity: 0.5;
+}
+
+/* --- Плавная анимация при прокрутке (appear on scroll) --- */
+.scroll-anim {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: all 0.6s ease;
+}
+
+.scroll-anim.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Адаптация меню на мобильных --- */
+@media (max-width: 480px) {
+  .top-nav {
+    gap: 16px;
+  }
+  .top-nav a {
+    font-size: 13px;
+  }
+}
+
 </style>
 </head>
 <body>
+
+<div class="top-nav">
+  <a href="#about">О занятиях</a>
+  <a href="#services">Услуги</a>
+  <a href="#prices">Цены</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#contacts">Контакты</a>
+</div>
+
   <div class="page">
     <header>
       <div class="logo-block">
