@@ -1460,6 +1460,17 @@ section { scroll-margin-top: 80px; }
 }
 
 </style>
+
+<style>
+.photos-carousel { overflow: hidden; width: 100%; border-radius: 16px; margin-bottom: 16px; }
+.photos-track { display: flex; transition: transform 0.6s ease; }
+.photos-slide { min-width: 100%; height: 260px; display: flex; justify-content: center; align-items: center; }
+.photos-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+.photos-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.photos-dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; cursor: pointer; transition: 0.3s; }
+.photos-dot.active { background: #2266ff; transform: scale(1.2); }
+</style>
+
 </head>
 <body>
 <div class="top-nav">
@@ -1718,6 +1729,30 @@ section { scroll-margin-top: 80px; }
       </section>
             <!-- Отзывы -->
       
+<section id="photos" class="section">
+  <div class="section-header">
+    <h2 class="section-title">Фото занятий</h2>
+    <p class="section-sub">Немного живых кадров с уроков 📸</p>
+  </div>
+
+  <div class="photos-carousel" id="photosCarousel">
+    <div class="photos-track">
+      <div class="photos-slide"><img src="https://i.imgur.com/2cQ8p5M.jpeg"></div>
+      <div class="photos-slide"><img src="https://i.imgur.com/nY8eM5A.jpeg"></div>
+      <div class="photos-slide"><img src="https://i.imgur.com/waB9t3e.jpeg"></div>
+      <div class="photos-slide"><img src="https://i.imgur.com/GJd41wU.jpeg"></div>
+    </div>
+  </div>
+
+  <div class="photos-dots" id="photosDots">
+    <div class="photos-dot active" data-index="0"></div>
+    <div class="photos-dot" data-index="1"></div>
+    <div class="photos-dot" data-index="2"></div>
+    <div class="photos-dot" data-index="3"></div>
+  </div>
+</section>
+
+
 <section id="photos" class="section">
   <div class="section-header">
     <h2 class="section-title">Фото занятий</h2>
@@ -2107,6 +2142,56 @@ function autoSlide(){
   track.style.transform="translateX(" + (-gIndex*220) + "px)";
 }
 setInterval(autoSlide, 3000);
+</script>
+
+
+<script>
+(function() {
+  const carousel = document.getElementById('photosCarousel');
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.photos-track');
+  const slides = Array.from(track.children);
+  const dotsContainer = document.getElementById('photosDots');
+  const dots = Array.from(dotsContainer.children);
+
+  let index = 0;
+  let autoTimer = null;
+
+  function update() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = 'translateX(' + (-index * slideWidth) + 'px)';
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(() => {
+      index = (index + 1) % slides.length;
+      update();
+    }, 5000);
+  }
+
+  function stopAuto() {
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      index = parseInt(dot.getAttribute('data-index'));
+      stopAuto();
+      update();
+      startAuto();
+    });
+  });
+
+  window.addEventListener('resize', update);
+  update();
+  startAuto();
+})();
 </script>
 
 </body>
