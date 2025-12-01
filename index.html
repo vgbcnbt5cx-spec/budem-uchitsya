@@ -1462,24 +1462,20 @@ section { scroll-margin-top: 80px; }
 </style>
 
 <style>
-.photos-carousel { overflow: hidden; width: 100%; border-radius: 16px; margin-bottom: 16px; }
-.photos-track { display: flex; transition: transform 0.6s ease; }
-.photos-slide { min-width: 100%; height: 260px; display: flex; justify-content: center; align-items: center; }
-.photos-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
-.photos-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-.photos-dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; cursor: pointer; transition: 0.3s; }
-.photos-dot.active { background: #2266ff; transform: scale(1.2); }
-</style>
+.photos-slide {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
 
-
-<style>
-.photos-carousel { overflow: hidden; width: 100%; border-radius: 16px; margin-bottom: 16px; }
-.photos-track { display: flex; transition: transform 0.6s ease; }
-.photos-slide { min-width: 100%; height: 260px; display: flex; justify-content: center; align-items: center; }
-.photos-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
-.photos-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
-.photos-dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; cursor: pointer; transition: 0.3s; }
-.photos-dot.active { background: #2266ff; transform: scale(1.2); }
+.photos-slide img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
 </style>
 
 </head>
@@ -1615,7 +1611,15 @@ section { scroll-margin-top: 80px; }
   </div>
 </div>
 
-
+<h3>Фото занятий</h3>
+<div class="gallery spring">
+  <div class="gallery-track" id="galleryAuto" id="galleryTrack">
+    <img src="https://i.imgur.com/2cQ8p5M.jpeg">
+    <img src="https://i.imgur.com/nY8eM5A.jpeg">
+    <img src="https://i.imgur.com/waB9t3e.jpeg">
+    <img src="https://i.imgur.com/GJd41wU.jpeg">
+  </div>
+</div>
         <div class="section-header">
           <h2 class="section-title">Чем занимаемся на уроках</h2>
           <p class="section-sub">Задача — не только знания, но и уверенность ребёнка в своих силах.</p>
@@ -1739,39 +1743,7 @@ section { scroll-margin-top: 80px; }
         </div>
       </section>
             <!-- Отзывы -->
-      
-
-
-
-
-
-
-
-
-<section id="photos" class="section" style="margin-top:30px;">
-  <div class="section-header">
-    <h2 class="section-title">Фото занятий</h2>
-    <p class="section-sub">Немного живых кадров с уроков 📸</p>
-  </div>
-
-  <div class="photos-carousel" id="photosCarousel">
-    <div class="photos-track">
-      <div class="photos-slide"><img src="img/photo1.jpg"></div>
-      <div class="photos-slide"><img src="img/photo2.jpg"></div>
-      <div class="photos-slide"><img src="img/photo3.jpg"></div>
-      <div class="photos-slide"><img src="img/photo4.jpg"></div>
-    </div>
-  </div>
-
-  <div class="photos-dots" id="photosDots">
-    <div class="photos-dot active" data-index="0"></div>
-    <div class="photos-dot" data-index="1"></div>
-    <div class="photos-dot" data-index="2"></div>
-    <div class="photos-dot" data-index="3"></div>
-  </div>
-</section>
-
-<section class="section reviews-section">
+      <section class="section reviews-section">
         <div class="section-header">
           <h2 class="section-title">Отзывы родителей</h2>
           <p class="section-sub">Немного живых сообщений и отзывов о занятиях.</p>
@@ -2137,106 +2109,6 @@ function autoSlide(){
   track.style.transform="translateX(" + (-gIndex*220) + "px)";
 }
 setInterval(autoSlide, 3000);
-</script>
-
-
-<script>
-(function() {
-  const carousel = document.getElementById('photosCarousel');
-  if (!carousel) return;
-
-  const track = carousel.querySelector('.photos-track');
-  const slides = Array.from(track.children);
-  const dotsContainer = document.getElementById('photosDots');
-  const dots = Array.from(dotsContainer.children);
-
-  let index = 0;
-  let autoTimer = null;
-
-  function update() {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    track.style.transform = 'translateX(' + (-index * slideWidth) + 'px)';
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-  }
-
-  function startAuto() {
-    stopAuto();
-    autoTimer = setInterval(() => {
-      index = (index + 1) % slides.length;
-      update();
-    }, 5000);
-  }
-
-  function stopAuto() {
-    if (autoTimer) {
-      clearInterval(autoTimer);
-      autoTimer = null;
-    }
-  }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      index = parseInt(dot.getAttribute('data-index'));
-      stopAuto();
-      update();
-      startAuto();
-    });
-  });
-
-  window.addEventListener('resize', update);
-  update();
-  startAuto();
-})();
-</script>
-
-
-<script>
-(function() {
-  const carousel = document.getElementById('photosCarousel');
-  if (!carousel) return;
-
-  const track = carousel.querySelector('.photos-track');
-  const slides = Array.from(track.children);
-  const dotsContainer = document.getElementById('photosDots');
-  const dots = Array.from(dotsContainer.children);
-
-  let index = 0;
-  let autoTimer = null;
-
-  function update() {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    track.style.transform = 'translateX(' + (-index * slideWidth) + 'px)';
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-  }
-
-  function startAuto() {
-    stopAuto();
-    autoTimer = setInterval(() => {
-      index = (index + 1) % slides.length;
-      update();
-    }, 5000);
-  }
-
-  function stopAuto() {
-    if (autoTimer) {
-      clearInterval(autoTimer);
-      autoTimer = null;
-    }
-  }
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      index = parseInt(dot.getAttribute('data-index'));
-      stopAuto();
-      update();
-      startAuto();
-    });
-  });
-
-  window.addEventListener('resize', update);
-  update();
-  startAuto();
-})();
 </script>
 
 </body>
